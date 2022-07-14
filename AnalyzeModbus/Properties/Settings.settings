@@ -17,7 +17,7 @@
     <Setting Name="functionCoil" Type="System.String" Scope="User">
       <Value Profile="(Default)">01</Value>
     </Setting>
-    <Setting Name="startMemory" Type="System.String" Scope="User">
+    <Setting Name="memoryStart" Type="System.String" Scope="User">
       <Value Profile="(Default)">00</Value>
     </Setting>
     <Setting Name="memoryLength" Type="System.String" Scope="User">

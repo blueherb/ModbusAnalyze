@@ -26,7 +26,7 @@ namespace AnalyzeModbus
 
         public static string sFunctionCoil = string.Empty;
 
-        public static string sStartMemory = string.Empty;
+        public static string sMemoryStart = string.Empty;
 
         public static string sMemoryLength = string.Empty;
 
@@ -59,8 +59,8 @@ namespace AnalyzeModbus
             GetPrivateProfileString("Setting", "펑션 코일", sFunctionCoil, Buf, 1024, sINIPath);
             sFunctionCoil = Buf.ToString();
 
-            GetPrivateProfileString("Setting", "메모리 시작점", sStartMemory, Buf, 1024, sINIPath);
-            sStartMemory = Buf.ToString();
+            GetPrivateProfileString("Setting", "메모리 시작점", sMemoryStart, Buf, 1024, sINIPath);
+            sMemoryStart = Buf.ToString();
 
             GetPrivateProfileString("Setting", "메모리 길이", sMemoryLength, Buf, 1024, sINIPath);
             sMemoryLength = Buf.ToString() + Environment.NewLine;
@@ -92,7 +92,7 @@ namespace AnalyzeModbus
          
             WritePrivateProfileString("Setting", "펑션 코일", sFunctionCoil, sINIPath);
 
-            WritePrivateProfileString("Setting", "메모리 시작점", sStartMemory, sINIPath);
+            WritePrivateProfileString("Setting", "메모리 시작점", sMemoryStart, sINIPath);
 
             WritePrivateProfileString("Setting", "메모리 길이", sMemoryLength, sINIPath);
 

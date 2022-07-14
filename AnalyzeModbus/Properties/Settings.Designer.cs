@@ -86,12 +86,12 @@ namespace AnalyzeModbus.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00")]
-        public string startMemory {
+        public string memoryStart {
             get {
-                return ((string)(this["startMemory"]));
+                return ((string)(this["memoryStart"]));
             }
             set {
-                this["startMemory"] = value;
+                this["memoryStart"] = value;
             }
         }
         

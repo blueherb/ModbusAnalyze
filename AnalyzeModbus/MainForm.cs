@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using log4net;
 using EasyModbus;
+using System.Globalization;
 
 namespace AnalyzeModbus
 {
@@ -25,10 +27,68 @@ namespace AnalyzeModbus
         public static int intValue;
         private string timeNow = DateTime.Now.ToString("yyMMddHHmmss");
         private string timeDifference;
-     
+
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void MainFormPropertyLoad()
+        {
+            tbQueryNumber.Text = Properties.Settings.Default.queryNumber;
+            cbFunctionCoil.Text = Properties.Settings.Default.functionCoil;
+            tbMemoryStart.Text = Properties.Settings.Default.memoryStart;
+            tbMemoryLength.Text = Properties.Settings.Default.memoryLength;
+
+            cbxAutoTx.Checked = Properties.Settings.Default.autoTx;
+            tbIntervalTx.Text = Properties.Settings.Default.intervalTx;
+            cbQueryRule.Text = Properties.Settings.Default.queryRule;
+            tbRapidCount.Text = Properties.Settings.Default.rapidCount;
+
+            dudSendedData.Text = Properties.Settings.Default.sendedData;
+        }
+        private void MainFormPropertySave()
+        {
+            Properties.Settings.Default.queryNumber = tbQueryNumber.Text;
+            Properties.Settings.Default.functionCoil = cbFunctionCoil.Text;
+            Properties.Settings.Default.memoryStart = tbMemoryStart.Text;
+            Properties.Settings.Default.memoryLength = tbMemoryLength.Text;
+
+            Properties.Settings.Default.autoTx = cbxAutoTx.Checked;
+            Properties.Settings.Default.intervalTx = tbIntervalTx.Text;
+            Properties.Settings.Default.queryRule = cbQueryRule.Text;
+            Properties.Settings.Default.rapidCount = tbRapidCount.Text;
+
+            Properties.Settings.Default.sendedData = dudSendedData.Text;
+            Properties.Settings.Default.Save();
+        }
+        private void MainFormConfigLoad()
+        {
+            tbQueryNumber.Text = Config.sQueryNumber;
+            cbFunctionCoil.Text = Config.sFunctionCoil;
+            tbMemoryStart.Text = Config.sMemoryStart;
+            tbMemoryLength.Text = Config.sMemoryLength;
+
+            cbxAutoTx.Checked = Convert.ToBoolean(Config.sAutoTx);
+            tbIntervalTx.Text = Config.sIntervalTx;
+            cbQueryRule.Text = Config.sQueryRule;
+            tbRapidCount.Text = Config.sRapidCount;
+
+            dudSendedData.Text = Config.sSendedData;
+        }
+        private void MainFormConfigSave()
+        {
+            Config.sQueryNumber = tbQueryNumber.Text;
+            Config.sFunctionCoil = cbFunctionCoil.Text;
+            Config.sMemoryStart = tbMemoryStart.Text;
+            Config.sMemoryLength = tbMemoryLength.Text;
+
+            Config.sAutoTx = Convert.ToString(cbxAutoTx.Checked);
+            Config.sIntervalTx = tbIntervalTx.Text;
+            Config.sQueryRule = cbQueryRule.Text;
+            Config.sRapidCount = tbRapidCount.Text;
+
+            Config.sSendedData = dudSendedData.Text;
         }
 
         //ModbusTCP 연결 탭 열기
@@ -39,49 +99,72 @@ namespace AnalyzeModbus
                 log.Info("*ModbusTCP 연결 탭 열림");
         }
 
-        //String -> Int32 Hex 오류없이 변환. (작업중!)
-        public static string Str2hex(string str2hex)
-        {
-            string resultHex = string.Empty;
-            byte[] arr_byteStr = Encoding.Default.GetBytes(str2hex);
-
-            foreach (byte byteStr in arr_byteStr)
-                resultHex += string.Format("{0:X2}", byteStr);
-
-            return resultHex;
-        }
-        
-        //String -> int32 Dex 오류없이 변환. (작업중!)
-        public static string Str2Dex(string str2dex)
-        {
-            string resultDex = string
-        }
         //MainForm 로드 이벤트 발생 시 이전 작업 복구
         private void MainForm_Load(object sender, EventArgs e)
         {
             log.Info("[프로그램 시작]");
-
-            tbQuery.Text = Properties.Settings.Default.queryNumber;
-            cbFunctionCoil.Text = Properties.Settings.Default.functionCoil;
-            tbMemoryStart.Text = Properties.Settings.Default.startMemory;
-            tbMemoryLength.Text = Properties.Settings.Default.memoryLength;
-
-            cbxAutoTx.Checked = Properties.Settings.Default.autoTx;
-            tbTxInterval.Text = Properties.Settings.Default.intervalTx;
-            cbQueryRule.Text = Properties.Settings.Default.queryRule;
-            tbRapidCount.Text = Properties.Settings.Default.rapidCount;
-            dudTx.Text = Properties.Settings.Default.sendedData;
-
+            MainFormPropertyLoad();
             log.Info("*이전 임시설정 복구");
         }
        
-        //자동 송신 예상시간 계산 (오류! 수정중!)
+        //오류없이 str -> int 변환
+        public static int Str2int (string str)
+        {
+            int num = (int.TryParse(str, out num) == true) ? num :  0;
+            return num;
+        }
+
+        //자동 송신 예상시간 계산 ("왜인진 모르겠지만 작동 안함.")
         private void leftTime_Changed(object sender, EventArgs e)
         {
-            string leftTime = Convert.ToString (StrCheck(tbTxInterval.Text)*StrCheck(tbRapidCount.Text)/ 1000);
-            lbLeftTime.Text = DateTime.Parse(leftTime).ToString("ddHHmmss");
+            TextRestriction(tbIntervalTx.Text, "dec");
+            TextRestriction(tbRapidCount.Text, "dec");
+            int leftTime = Str2int(tbIntervalTx.Text) * Str2int(tbRapidCount.Text) / 1000;
+       
+            string leftTime_D = Convert.ToString(leftTime / 86400)+"일 ";
+            string leftTime_H = Convert.ToString(leftTime % 86400 / 3600)+"시간 ";
+            string leftTime_M = Convert.ToString(leftTime % 86400 % 3600 / 60)+"분 ";
+            string leftTime_S = Convert.ToString(leftTime % 86400 % 3600 % 60 % 60)+"초";
+            lbLeftTime.Text =leftTime_D + leftTime_H + leftTime_M + leftTime_S;
+            
+            if (leftTime/ 86400 >= 7)
+            {
+                tbIntervalTx.Text = "1000";
+                tbRapidCount.Text = "1";
+                MessageBox.Show("7일보다 더 길게 통신할 수 없습니다!");
+            }
         }
-        //시간 차 구하기
+
+        //Dec 입력 유연대처
+        public static string TextRestriction(string str, string mode)
+        {
+            log.Debug("텍스트 보정 발동!!");
+            if (Str2int(str) == 0 && mode == "dec")
+            {
+                str = Regex.Replace(str, @"[^0-9]", "");
+                log.Debug("정수 보정!!");
+                return str;
+            }
+            else if (Str2int(str) == 0 && mode == "hex")
+            {
+                str = Regex.Replace(str, @"[^0-9A-F]", "");
+                log.Debug("16진수 보정!!");
+                return str;
+            }
+            else if (Str2int(str) == 0 && mode == "ip")
+            {
+                str = Regex.Replace(str, @"(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){ 3}", "");
+                log.Debug("IP 보정!!");
+                return str;
+            }
+            else
+            {
+                log.Debug("보정이 필요없음!!");
+                return str;
+            } 
+
+        }
+        //시간 차 구하기 ("시간차 안구함")
         public string TimeDifference(string now, string before)
         {
             timeDifference = (Convert.ToDateTime(now) - Convert.ToDateTime(before)).ToString("yy MM dd HH mm ss");
@@ -127,6 +210,7 @@ namespace AnalyzeModbus
         //설정 저장
         private void tsmiSave_Click(object sender, EventArgs e)
         {
+            MainFormConfigSave();
             configSaved = true;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.OverwritePrompt = true;
@@ -159,6 +243,7 @@ namespace AnalyzeModbus
                 Config.sINIPath = openFileDialog.FileName;
                 Config.LoadIniFile();
                 Config.WriteUpdatingInfo(true);
+                MainFormConfigLoad();
                 log.Info("*설정 파일 로드완료");
             }
         }
@@ -166,6 +251,8 @@ namespace AnalyzeModbus
         //프로그램 종료 이벤트
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
+            log.Info("*사용자 임시설정 저장 중...");
+            MainFormPropertySave();
             log.Info("[프로그램 종료]"+ Environment.NewLine);
         }
 

@@ -43,6 +43,7 @@ namespace AnalyzeModbus
             this.tbTcpIpAddress.AllowDrop = true;
             this.tbTcpIpAddress.Font = new System.Drawing.Font("굴림", 9F);
             this.tbTcpIpAddress.Location = new System.Drawing.Point(140, 39);
+            this.tbTcpIpAddress.MaxLength = 15;
             this.tbTcpIpAddress.Name = "tbTcpIpAddress";
             this.tbTcpIpAddress.Size = new System.Drawing.Size(117, 21);
             this.tbTcpIpAddress.TabIndex = 0;
@@ -83,6 +84,7 @@ namespace AnalyzeModbus
             // 
             this.tbTcpPort.Font = new System.Drawing.Font("굴림", 9F);
             this.tbTcpPort.Location = new System.Drawing.Point(140, 96);
+            this.tbTcpPort.MaxLength = 5;
             this.tbTcpPort.Name = "tbTcpPort";
             this.tbTcpPort.Size = new System.Drawing.Size(117, 21);
             this.tbTcpPort.TabIndex = 1;

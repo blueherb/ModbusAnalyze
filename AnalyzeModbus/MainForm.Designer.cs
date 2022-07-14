@@ -71,11 +71,11 @@ namespace AnalyzeModbus
             this.tbData = new System.Windows.Forms.TextBox();
             this.vsbData = new System.Windows.Forms.VScrollBar();
             this.btnSend = new System.Windows.Forms.Button();
-            this.dudTx = new System.Windows.Forms.DomainUpDown();
+            this.dudSendedData = new System.Windows.Forms.DomainUpDown();
             this.cbFunctionCoil = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbMemoryLength = new System.Windows.Forms.TextBox();
-            this.tbQuery = new System.Windows.Forms.TextBox();
+            this.tbQueryNumber = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@ namespace AnalyzeModbus
             this.tbRapidCount = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.tbTxInterval = new System.Windows.Forms.TextBox();
+            this.tbIntervalTx = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbxAutoTx = new System.Windows.Forms.CheckBox();
             this.cbQueryRule = new System.Windows.Forms.ComboBox();
@@ -261,7 +261,7 @@ namespace AnalyzeModbus
             this.btnDisconnect.Location = new System.Drawing.Point(487, 73);
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(69, 24);
-            this.btnDisconnect.TabIndex = 18;
+            this.btnDisconnect.TabIndex = 0;
             this.btnDisconnect.Text = "연결 끊기";
             this.btnDisconnect.UseVisualStyleBackColor = true;
             this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
@@ -425,17 +425,17 @@ namespace AnalyzeModbus
             this.btnSend.Location = new System.Drawing.Point(505, 410);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(69, 24);
-            this.btnSend.TabIndex = 5;
+            this.btnSend.TabIndex = 2;
             this.btnSend.Text = "보내기";
             this.btnSend.UseVisualStyleBackColor = true;
             // 
-            // dudTx
+            // dudSendedData
             // 
-            this.dudTx.Location = new System.Drawing.Point(18, 411);
-            this.dudTx.Name = "dudTx";
-            this.dudTx.Size = new System.Drawing.Size(481, 21);
-            this.dudTx.TabIndex = 6;
-            this.dudTx.Text = "00 01 00 00 00 06 01 00 00 00 00 01";
+            this.dudSendedData.Location = new System.Drawing.Point(18, 411);
+            this.dudSendedData.Name = "dudSendedData";
+            this.dudSendedData.Size = new System.Drawing.Size(481, 21);
+            this.dudSendedData.TabIndex = 1;
+            this.dudSendedData.Text = "00 01 00 00 00 06 01 00 00 00 00 01";
             // 
             // cbFunctionCoil
             // 
@@ -450,14 +450,15 @@ namespace AnalyzeModbus
             "15 (Bit 메모리 복수 쓰기)",
             "16 (Word 메모리 복수 쓰기)"});
             this.cbFunctionCoil.Location = new System.Drawing.Point(333, 28);
+            this.cbFunctionCoil.MaxLength = 2;
             this.cbFunctionCoil.Name = "cbFunctionCoil";
             this.cbFunctionCoil.Size = new System.Drawing.Size(184, 20);
-            this.cbFunctionCoil.TabIndex = 7;
+            this.cbFunctionCoil.TabIndex = 4;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.tbMemoryLength);
-            this.groupBox4.Controls.Add(this.tbQuery);
+            this.groupBox4.Controls.Add(this.tbQueryNumber);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label6);
@@ -474,18 +475,20 @@ namespace AnalyzeModbus
             // tbMemoryLength
             // 
             this.tbMemoryLength.Location = new System.Drawing.Point(333, 64);
+            this.tbMemoryLength.MaxLength = 4;
             this.tbMemoryLength.Name = "tbMemoryLength";
             this.tbMemoryLength.Size = new System.Drawing.Size(80, 21);
-            this.tbMemoryLength.TabIndex = 14;
+            this.tbMemoryLength.TabIndex = 6;
             this.tbMemoryLength.Text = "1";
             // 
-            // tbQuery
+            // tbQueryNumber
             // 
-            this.tbQuery.Location = new System.Drawing.Point(104, 28);
-            this.tbQuery.Name = "tbQuery";
-            this.tbQuery.Size = new System.Drawing.Size(81, 21);
-            this.tbQuery.TabIndex = 12;
-            this.tbQuery.Text = "1";
+            this.tbQueryNumber.Location = new System.Drawing.Point(104, 28);
+            this.tbQueryNumber.MaxLength = 4;
+            this.tbQueryNumber.Name = "tbQueryNumber";
+            this.tbQueryNumber.Size = new System.Drawing.Size(81, 21);
+            this.tbQueryNumber.TabIndex = 3;
+            this.tbQueryNumber.Text = "1";
             // 
             // label9
             // 
@@ -517,9 +520,10 @@ namespace AnalyzeModbus
             // tbMemoryStart
             // 
             this.tbMemoryStart.Location = new System.Drawing.Point(105, 64);
+            this.tbMemoryStart.MaxLength = 4;
             this.tbMemoryStart.Name = "tbMemoryStart";
             this.tbMemoryStart.Size = new System.Drawing.Size(80, 21);
-            this.tbMemoryStart.TabIndex = 13;
+            this.tbMemoryStart.TabIndex = 5;
             this.tbMemoryStart.Text = "1";
             // 
             // label8
@@ -538,7 +542,7 @@ namespace AnalyzeModbus
             this.groupBox5.Controls.Add(this.tbRapidCount);
             this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.tbTxInterval);
+            this.groupBox5.Controls.Add(this.tbIntervalTx);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.cbxAutoTx);
             this.groupBox5.Controls.Add(this.cbQueryRule);
@@ -553,16 +557,16 @@ namespace AnalyzeModbus
             // lbLeftTime
             // 
             this.lbLeftTime.AutoSize = true;
-            this.lbLeftTime.Location = new System.Drawing.Point(448, 67);
+            this.lbLeftTime.Location = new System.Drawing.Point(437, 67);
             this.lbLeftTime.Name = "lbLeftTime";
-            this.lbLeftTime.Size = new System.Drawing.Size(67, 12);
+            this.lbLeftTime.Size = new System.Drawing.Size(11, 12);
             this.lbLeftTime.TabIndex = 23;
-            this.lbLeftTime.Text = "HH:MM:SS";
+            this.lbLeftTime.Text = "-";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(361, 67);
+            this.label18.Location = new System.Drawing.Point(354, 67);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(81, 12);
             this.label18.TabIndex = 21;
@@ -573,7 +577,8 @@ namespace AnalyzeModbus
             this.tbRapidCount.Location = new System.Drawing.Point(276, 63);
             this.tbRapidCount.Name = "tbRapidCount";
             this.tbRapidCount.Size = new System.Drawing.Size(50, 21);
-            this.tbRapidCount.TabIndex = 20;
+            this.tbRapidCount.TabIndex = 10;
+            this.tbRapidCount.Text = "1";
             this.tbRapidCount.TextChanged += new System.EventHandler(this.leftTime_Changed);
             // 
             // label17
@@ -594,14 +599,14 @@ namespace AnalyzeModbus
             this.label12.TabIndex = 18;
             this.label12.Text = "ms";
             // 
-            // tbTxInterval
+            // tbIntervalTx
             // 
-            this.tbTxInterval.Location = new System.Drawing.Point(276, 28);
-            this.tbTxInterval.Name = "tbTxInterval";
-            this.tbTxInterval.Size = new System.Drawing.Size(50, 21);
-            this.tbTxInterval.TabIndex = 15;
-            this.tbTxInterval.Text = "500";
-            this.tbTxInterval.TextChanged += new System.EventHandler(this.leftTime_Changed);
+            this.tbIntervalTx.Location = new System.Drawing.Point(276, 28);
+            this.tbIntervalTx.Name = "tbIntervalTx";
+            this.tbIntervalTx.Size = new System.Drawing.Size(50, 21);
+            this.tbIntervalTx.TabIndex = 8;
+            this.tbIntervalTx.Text = "1000";
+            this.tbIntervalTx.TextChanged += new System.EventHandler(this.leftTime_Changed);
             // 
             // label10
             // 
@@ -619,7 +624,7 @@ namespace AnalyzeModbus
             this.cbxAutoTx.Location = new System.Drawing.Point(9, 30);
             this.cbxAutoTx.Name = "cbxAutoTx";
             this.cbxAutoTx.Size = new System.Drawing.Size(184, 16);
-            this.cbxAutoTx.TabIndex = 17;
+            this.cbxAutoTx.TabIndex = 7;
             this.cbxAutoTx.Text = "설정 값에 따라 자동 송신하기";
             this.cbxAutoTx.UseVisualStyleBackColor = true;
             // 
@@ -633,7 +638,7 @@ namespace AnalyzeModbus
             this.cbQueryRule.Location = new System.Drawing.Point(125, 64);
             this.cbQueryRule.Name = "cbQueryRule";
             this.cbQueryRule.Size = new System.Drawing.Size(68, 20);
-            this.cbQueryRule.TabIndex = 15;
+            this.cbQueryRule.TabIndex = 9;
             // 
             // label11
             // 
@@ -667,7 +672,7 @@ namespace AnalyzeModbus
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.dudTx);
+            this.Controls.Add(this.dudSendedData);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -727,13 +732,13 @@ namespace AnalyzeModbus
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox tbMemoryLength;
         private System.Windows.Forms.TextBox tbMemoryStart;
-        private System.Windows.Forms.TextBox tbQuery;
+        private System.Windows.Forms.TextBox tbQueryNumber;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbFunctionCoil;
-        private System.Windows.Forms.DomainUpDown dudTx;
+        private System.Windows.Forms.DomainUpDown dudSendedData;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox tbData;
@@ -741,7 +746,7 @@ namespace AnalyzeModbus
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox tbTxInterval;
+        private System.Windows.Forms.TextBox tbIntervalTx;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox cbxAutoTx;
         private System.Windows.Forms.ComboBox cbQueryRule;
