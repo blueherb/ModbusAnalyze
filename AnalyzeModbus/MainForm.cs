@@ -206,7 +206,6 @@ namespace AnalyzeModbus
                 +"Connected time : "+lbConnectTime.Text+"]");
             }
         }
-
         //설정 저장
         private void tsmiSave_Click(object sender, EventArgs e)
         {
@@ -227,7 +226,6 @@ namespace AnalyzeModbus
                 log.Info("*설정 파일 저장완료");
             }
         }
-
         //설정 불러오기
         private void tsmiLoad_Click(object sender, EventArgs e)
         {
@@ -247,7 +245,6 @@ namespace AnalyzeModbus
                 log.Info("*설정 파일 로드완료");
             }
         }
-
         //프로그램 종료 이벤트
         private void MainForm_Closing(object sender, FormClosingEventArgs e)
         {
@@ -255,7 +252,5 @@ namespace AnalyzeModbus
             MainFormPropertySave();
             log.Info("[프로그램 종료]"+ Environment.NewLine);
         }
-
-
     }
 }

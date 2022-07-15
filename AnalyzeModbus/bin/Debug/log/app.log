@@ -677,3 +677,66 @@
 2022-07-14 18:50:40,738 [1] INFO AnalyzeModbus.MainForm - *사용자 임시설정 저장 중...
 2022-07-14 18:50:40,761 [1] INFO AnalyzeModbus.MainForm - [프로그램 종료]
 
+2022-07-15 12:15:41,705 [1] INFO AnalyzeModbus.MainForm - [프로그램 시작]
+2022-07-15 12:15:41,750 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:15:41,751 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:15:41,751 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:15:41,751 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:15:41,756 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:15:41,756 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:15:41,756 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:15:41,756 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:15:41,756 [1] INFO AnalyzeModbus.MainForm - *이전 임시설정 복구
+2022-07-15 12:15:52,081 [1] INFO AnalyzeModbus.MainForm - *설정 파일 저장완료
+2022-07-15 12:16:11,680 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:11,680 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:16:11,680 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:11,680 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:16:12,351 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:12,352 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:16:12,352 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:12,352 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:16:14,841 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:14,841 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:14,841 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:14,841 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:16:15,711 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:15,711 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:15,711 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:15,711 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:16,108 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:16,108 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:16,108 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:16,108 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:16,441 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:16,441 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:16,441 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:16,441 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:22,995 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:22,995 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:22,995 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:22,995 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:23,155 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:23,156 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:23,156 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:23,156 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:23,329 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:23,329 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:23,329 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:23,329 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:23,504 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:23,504 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:23,504 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:23,504 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:38,668 [1] INFO AnalyzeModbus.MainForm - *설정 파일 저장완료
+2022-07-15 12:16:49,275 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:49,275 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:49,275 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:49,275 [1] DEBUG AnalyzeModbus.MainForm - 보정이 필요없음!!
+2022-07-15 12:16:49,275 [1] INFO AnalyzeModbus.MainForm - *설정 파일 로드완료
+2022-07-15 12:16:50,423 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:50,423 [1] DEBUG AnalyzeModbus.MainForm - IP 보정!!
+2022-07-15 12:16:50,423 [1] DEBUG AnalyzeModbus.MainForm - 텍스트 보정 발동!!
+2022-07-15 12:16:50,423 [1] DEBUG AnalyzeModbus.MainForm - 정수 보정!!
+2022-07-15 12:16:51,707 [1] INFO AnalyzeModbus.ModbusTcpForm - *연결 설정 불러옴
+2022-07-15 12:16:51,707 [1] INFO AnalyzeModbus.ModbusTcpForm - *연결 탭 닫음
